@@ -1,0 +1,26 @@
+{% extends 'electroshop/base.html' %}
+{% load staticfiles %}
+
+{%block content %}
+
+<h1> Register with ElectroShop </h1>
+<br>
+<div class="container">
+    {% if registered %}
+        <p>Thank you for registering. </p>
+        <p><a href="{%url 'login'%}">Login</a></p>
+
+        {% else %}
+        <form class="form-signin" id ="user_form" method="POST" action="." enctype="multipart/form-data">
+             {% csrf_token %}
+            <h2>Sign Up Here </h2>
+            
+            {{user_form.as_p}}   
+            {{profile_form.as_p}}
+
+        <input class="btn btn-primary" type="submit" name="submit" value="Register">
+        </form>
+    {%endif%}
+    
+</div>
+{%endblock%}

@@ -1,0 +1,30 @@
+{% extends 'electroshop/base.html' %}
+
+
+
+
+{% block content %}
+    <div class="well">
+		<div class="thumbnail">
+
+            <img src="{{product.image.url}}" alt="">
+            <div class="caption" style="float:right; padding-right:200px;">
+
+                <h3>{{product.name}}</h3> in <a href="/categories/{{product.category.slug}}">{{product.category.category}}</a>
+                <h4>Price: {{product.price}}</h4>
+                <p>{{product.desc}}</p>
+                
+                <form action="{%url 'product_detail' slug=product.slug%}" method = "POST">
+                {% csrf_token%}
+                    {{ form.as_p}}
+                    <button class="btn btn-primary">Add to Cart</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+

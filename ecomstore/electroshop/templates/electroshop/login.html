@@ -1,0 +1,24 @@
+{% extends 'electroshop/base.html' %}
+{% load staticfiles %}
+
+{%block content%}
+
+<h1>Login to ElectroShop</h1>
+
+<div class="container">
+    <form class="form-signin span4" id = "login-form" method="POST" action=".">
+        <h2 class="form-signin-heading">Please Sign in </h2>
+        {% csrf_token %}
+        {% if bad_details %}
+        <p><strong>Your username and/or password were incorrect !</strong></p>
+        {% elif disabled_account %}
+        <p><strong>Your ElectroShop account is currently diabled.</strong></p>
+        {%endif%}
+
+        Username : <input type="text" class="input-block-level" placeholder="Username" name="username"><br>
+        Password : <input type="password" class="input-block-level" placeholder="Password" name="password"><br>
+        <button class="btn btn-primary" type="submit">Sign in</button>
+    </form>
+</div>
+
+{%endblock%}

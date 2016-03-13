@@ -1,0 +1,112 @@
+{% load staticfiles %}
+<html>
+    <head><title>Electroshop</title></head>
+            <!-- Mobile viewport optimized -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        
+        <!-- Bootstrap CSS -->
+        <link href="../../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../static/includes/css/bootstrap-glyphicons.css" rel="stylesheet">
+        
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+        
+        <!-- Include Modernizr in the head, before any other Javascript -->
+        <script src="../../static/includes/js/modernizr-2.6.2.min.js"></script>
+        
+    
+    <body>
+<!-- Static navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" style="margin-top:5px;" href="/">ElectroShop</a>
+                </div>
+
+                <div class="navbar-collapse collapse navbar-responsive-collapse">
+
+                    <ul class="nav navbar-nav">                        
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
+                          {% include 'electroshop/cats.html'%}
+                       </li>
+                    </ul> <!-- end navbar list -->
+
+
+
+                 <form class="navbar-form navbar-left" action="{%url 'search_product'%}" method="POST">
+                    {%csrf_token%}
+                    <input type="text" class="form-control" name="q" placeholder="Search..." style="width:600px;">
+                </form>
+
+                 <ul class="nav navbar-nav pull-right" style="margin-top:-48px;">
+                   {% if user.is_authenticated %}
+                   <li ><a href="{%url 'dashboard' %}">{{user.username}}  </a></li>
+                    <li><a href="{%url 'logout'%}">Logout</a></li>
+                   {% else %}
+                   <li><a href="{%url 'register'%}">Register</a></li>
+                    <li><a href="{%url 'login'%}">Login</a></li>
+                   {% endif %}
+               </ul>
+
+                </div> <!-- end collapse -->
+
+            </div> <!-- end container -->
+    </nav>
+
+
+
+  
+  <div class="container-fluid">
+
+
+        {%block content%}
+        {%endblock%}
+
+  </div>
+
+
+ 
+
+
+        <!-- All Javascript at the bottom of the page for faster page loading -->
+        
+        <!-- First try for the online version of jQuery-->
+        <script src="http://code.jquery.com/jquery.js"></script>
+    
+        <!-- If no online access, fallback to our hardcoded version of jQuery -->
+        <script>window.jQuery || document.write('<script src="../../static/includes/js/jquery-1.8.2.min.js"><\/script>')</script>
+    
+        <!-- Bootstrap JS -->
+        <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+    
+        <!-- Custom JS -->
+        <script src="../../static/includes/js/script.js"></script>
+
+
+     <!-- All Javascript at the bottom of the page for faster page loading -->
+        
+        <!-- First try for the online version of jQuery-->
+        <script src="http://code.jquery.com/jquery.js"></script>
+    
+        <!-- If no online access, fallback to our hardcoded version of jQuery -->
+        <script>window.jQuery || document.write('<script src="../../static/includes/js/jquery-1.8.2.min.js"><\/script>')</script>
+    
+        <!-- Bootstrap JS -->
+        <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+    
+        <!-- Custom JS -->
+        <script src="../../static/includes/js/script.js"></script>
+
+
+    </body>
+
+<html>
+
+

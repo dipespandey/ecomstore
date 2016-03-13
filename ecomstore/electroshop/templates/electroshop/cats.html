@@ -1,0 +1,5 @@
+<ul class="dropdown-menu">
+{% for category in categories%}
+<li><a href="categories/{{category.slug}}">{{category.category}}</a></li>
+{%endfor%}
+</ul>
